@@ -103,10 +103,10 @@
             <div class="collapse navbar-collapse" id="navbar">
                <ul class="navbar-nav mx-auto">
                   <li class="nav-item">
-                     <a class="nav-link nav-link-active" href="/kupal.org/"><i class="fa-solid fa-house"></i> Home</a>
+                     <a class="nav-link" href="/kupal.org/"><i class="fa-solid fa-house"></i> Home</a>
                   </li>
                   <li class="nav-item">
-                     <a class="nav-link" href="/kupal.org/recipes/"><i class="fa-solid fa-hammer"></i> Recipes</a>
+                     <a class="nav-link nav-link-active" href="/kupal.org/recipes/"><i class="fa-solid fa-hammer"></i> Recipes</a>
                   </li>
                   <li class="nav-item">
                      <a class="nav-link" href="http://map.kupal.org:7024/" target="_blank"><i class="fa-solid fa-map"></i> Map</a>
@@ -198,7 +198,7 @@
                   <div class="card-header news-header">
                      <div class="news-flex">
                         <div class="news-text">
-                           <a class="news-title">Kupal Mc | Civilization Series</a>
+                           <a class="news-title">Civilization Series Season 1 | Recipe Tree</a>
                         </div>    
                      </div>
                   </div>
@@ -216,12 +216,29 @@
                         display: block; 
                         }
                      </style>
+                     <script>
+                        const frame = document.getElementById('myFrame');
+
+                        function resizeFrame() {
+                        const doc = frame.contentWindow.document;
+                        frame.style.height = doc.documentElement.scrollHeight + 'px';
+                        }
+
+                        frame.addEventListener('load', () => {
+                        resizeFrame();
+                        
+                        const resizeObserver = new ResizeObserver(resizeFrame);
+                        resizeObserver.observe(frame.contentWindow.document.body);
+                        });
+                     </script>
                      <div class="iframe-wrapper">
                         <iframe 
+                           id="myFrame"
                            src="https://kupalmc-recipes.vercel.app/" 
-                           style="border: none;">
+                           scrolling="no"
+                           style="border: none; overflow: hidden; width: 100%; display: block;">
                         </iframe>
-                        </div>
+                     </div>
                   </div>
                </div>
             </div>
